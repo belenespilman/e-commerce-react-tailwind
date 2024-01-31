@@ -1,6 +1,6 @@
 import {useRoutes, BrowserRouter} from 'react-router-dom'
 import Home from "../Home";
-import MyOrder from '../Home/MyOrder';
+import MyOrder from '../MyOrder';
 import MyAccount from "../MyAccount";
 import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
