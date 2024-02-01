@@ -32,15 +32,9 @@ const NavBar = () => {
                 </NavLink>
                 </li>
                 <li>
-                <NavLink to='/furnitures'
+                <NavLink to='/jewelry'
                 className={({isActive}) => isActive ? activeStyle : undefined}>
-                    Furnitures
-                </NavLink>
-                </li>
-                <li>
-                <NavLink to='/music'
-                className={({isActive}) => isActive ? activeStyle : undefined}>
-                    Music
+                    Jewelry
                 </NavLink>
                 </li>
                 <li>
