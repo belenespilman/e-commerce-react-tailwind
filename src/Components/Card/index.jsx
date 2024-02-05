@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/24/solid"
+import { CheckIcon, PlusIcon } from "@heroicons/react/24/solid"
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 
@@ -18,7 +18,33 @@ const Card = ({item}) => {
         context.openCheckoutSideMenu()
     }   
 
+    const renderIcon =(id) => {
+        const isInCart = context.cartProducts.filter(product => product.id === id).length > 0
 
+        if(isInCart) {
+            return (
+            <div 
+                className='absolute font-semibold top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'
+                >
+             <CheckIcon 
+                className='h-6 w-6 text-white'></CheckIcon> 
+                
+                
+            </div> 
+            )
+        } else {
+            return (
+                <div 
+                    className='absolute font-semibold top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+                    onClick={(event) => addProductsToCart(event, item)} 
+                    >
+                 <PlusIcon 
+                    onClick={() => addProductsToCart(item)}
+                    className="h-6 w-6 text-black-500"></PlusIcon>
+                    
+                </div> 
+         )}
+    }
     
 
     return (
@@ -32,16 +58,9 @@ const Card = ({item}) => {
                 className='w-full h-full object-cover rounded-lg' 
                 src={item.image}
                 alt={item.title} />
-                <div 
-                className='absolute font-semibold top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
-                onClick={(event) => addProductsToCart(event, item)} 
-                >
-                <PlusIcon 
-                onClick={() => addProductsToCart(item)}
-                className="h-6 w-6 text-black-500"></PlusIcon>
-                
-                </div>
+                {renderIcon(item.id)}
             </figure>
+
             <p className='flex justify-between'>
                 <span className='text-sm font-light truncate overflow: ellipsis' >{item.title}</span>
                 <span className='text-lg font-medium'>{`$${item.price}`}</span>
