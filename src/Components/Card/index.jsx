@@ -2,6 +2,7 @@ import { PlusIcon } from "@heroicons/react/24/solid"
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 
+
 const Card = ({item}) => {
     const context = useContext(ShoppingCartContext)
     
@@ -10,10 +11,11 @@ const Card = ({item}) => {
         context.setProductToShow(productDetail)
     }
 
-    const addProductsToCart = (productData) => {
+    const addProductsToCart = (event, productData) => {
+        event.stopPropagation()
         context.setCount(context.count + 1)
         context.setCartProducts([...context.cartProducts, productData])
-        console.log('cart', context.cartProducts)
+        context.openCheckoutSideMenu()
     }   
 
 
@@ -32,6 +34,7 @@ const Card = ({item}) => {
                 alt={item.title} />
                 <div 
                 className='absolute font-semibold top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1'
+                onClick={(event) => addProductsToCart(event, item)} 
                 >
                 <PlusIcon 
                 onClick={() => addProductsToCart(item)}
