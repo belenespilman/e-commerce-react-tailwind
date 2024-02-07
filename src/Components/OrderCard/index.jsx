@@ -5,7 +5,14 @@ import { ShoppingCartContext } from '../../Context'
 
 
 const OrderCard = (props) => {
-    const {title, imageURL, price} = props
+    const {id, title, imageURL, price, handleDelete} = props
+    let renderXMarkIcon
+    if (handleDelete) {
+renderXMarkIcon =   
+<XMarkIcon onClick={() => handleDelete(id)} className="h-6 w-6 text-black-500 cursor-pointer"></XMarkIcon>
+
+    }
+
 
 
 return (
@@ -19,14 +26,10 @@ return (
             alt={title} />
          </figure>
         <p className='text-sm font-light'>{title}</p>
-
+        {renderXMarkIcon}
     </div>
 
-    <div  className='flex items-center gap-2'>
-        <p className='text-md font-medium'>$ {price}</p>
-        <XMarkIcon 
-        className="h-6 w-6 text-black-500 cursor-pointer"></XMarkIcon>
-    </div>
+    
 
     </div>
 )
