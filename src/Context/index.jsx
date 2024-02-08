@@ -44,13 +44,17 @@ export const ShoppingCartProvider = ({children}) => {
     //Get products by title
     const [searchByTitle, setSearchByTitle]= useState([]);
     
+
+    // Get Products by Category 
+    const [searchByCategory, setSearchByCategory]= useState('');
+
+
     // Filtered Items
     const [filteredItems, setFilteredItems]= useState([]);
    
 
     useEffect(()=> {
         getAllProducts().then(res => {
-          console.log(res)
           setItems(res)
         });
       }, [])
@@ -59,11 +63,23 @@ export const ShoppingCartProvider = ({children}) => {
         return items?.filter(item => item.title.toLowerCase().includes(searchByTitle))
     }
 
+
+    const filteredItemsByCategory = (items, searchByCategory) => {
+      if(searchByCategory === 'clothes'){
+        const filteredItems = items?.filter(item => item.category.toLowerCase().includes('men\'s clothing') ||item.category.toLowerCase().includes('women\'s clothing') )
+        return filteredItems
+      }
+      const filteredItems = items?.filter(item => item.category.toLowerCase().includes(searchByCategory))
+      return filteredItems
+  }
+
    
     useEffect(()=> {
-      if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
       
-    }, [items, searchByTitle])
+      if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
+      if (searchByCategory) setFilteredItems(filteredItemsByCategory(items, searchByCategory))
+      
+    }, [items, searchByTitle, searchByCategory])
 
   
 
@@ -90,7 +106,9 @@ export const ShoppingCartProvider = ({children}) => {
         setSearchByTitle,
         search, 
         filteredItems,
-        setFilteredItems
+        setFilteredItems,
+        searchByCategory,
+        setSearchByCategory
         }}>
 
         {children}

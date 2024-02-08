@@ -13,7 +13,7 @@ return (
     
     <div className='flex justify-between w-full'>
 
-    <p className='flex flex-col'>
+    <div className='flex flex-col'>
 
         <div className="flex items-center">
 
@@ -27,7 +27,7 @@ return (
             <ShoppingBagIcon className="h-6 w-6 text-black-500"/>
             <span className='font-light ml-2'>{totalProducts} articles</span>
         </div>
-    </p>
+    </div>
 
     <p className='flex items-center gap-3'>
 

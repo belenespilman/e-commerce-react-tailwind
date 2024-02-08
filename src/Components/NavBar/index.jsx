@@ -15,36 +15,43 @@ const NavBar = () => {
             <ul className='flex items-center gap-3'>
                 <li className='font-semibold text-lg'>
                 <NavLink 
-                to='/'>
+                to='/'
+                onClick={() => context.setSearchByCategory()}>
                     Shopi
                 </NavLink>
                 </li>
+
                 <li>
                 <NavLink to='/'
+                onClick={() => context.setSearchByCategory()}
                 className={({isActive}) => isActive ? activeStyle : undefined}>
                     All
                 </NavLink>
                 </li>
                 <li>
                 <NavLink to='/clothes'
+                onClick={() => context.setSearchByCategory('clothes')}
                 className={({isActive}) => isActive ? activeStyle : undefined}>
                     Clothes
                 </NavLink>
                 </li>
                 <li>
                 <NavLink to='/electronics'
+                onClick={() => context.setSearchByCategory('electronics')}
                 className={({isActive}) => isActive ? activeStyle : undefined}>
                     Electronics
                 </NavLink>
                 </li>
                 <li>
                 <NavLink to='/jewelry'
+                onClick={() => context.setSearchByCategory('jewelery')}
                 className={({isActive}) => isActive ? activeStyle : undefined}>
-                    Jewelry
+                    Jewelery
                 </NavLink>
                 </li>
                 <li>
                 <NavLink to='/others'
+                onClick={() => context.setSearchByCategory()}
                 className={({isActive}) => isActive ? activeStyle : undefined}>
                     Others
                 </NavLink>
