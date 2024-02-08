@@ -13,3 +13,9 @@ export const totalPrice = (products) => {
 
   return totalRoundUp;
 };
+
+//this function shows the current date on the card of my orders
+export const currentDate = () => {
+  const date = new Date().toLocaleDateString();
+  return date;
+};

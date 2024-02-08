@@ -18,13 +18,14 @@ const CheckoutSideMenu = () => {
         const orderToAdd= {
             date: '01.02.2024',
             products: context.cartProducts,
-            totalProduct: context.cartProducts.length,
+            totalProducts: context.cartProducts.length,
             totalPrice: totalPrice(context.cartProducts)
         }
 
         context.setOrder([...context.order, orderToAdd]);
         context.setCartProducts([]);
         context.setCount(0);
+        context.closeCheckoutSideMenu();
 
 
 
