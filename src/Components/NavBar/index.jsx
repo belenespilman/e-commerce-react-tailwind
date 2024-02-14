@@ -13,26 +13,27 @@ const NavBar = () => {
   const parsedSignOut = JSON.parse(signOut)
   const isUserSignOut = context.signOut  || parsedSignOut
 
+  //Account
+  const account = localStorage.getItem('account')
+  const parsedAccount = JSON.parse(account)
+
+  //Has an account
+  const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
+  const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
+  const hasUserAnAccount = !noAccountInLocalStorage  || !noAccountInLocalState  
+
+
+
   const handleSignOut = () => {
     localStorage.setItem('sign-out', JSON.stringify(true));
     context.setSignOut(true);
   };
 
   const RenderView = () => {
-    if (isUserSignOut) {
+    if (hasUserAnAccount && !isUserSignOut) {
         return (
-            <li>
-                <NavLink
-                to='/sign-in'
-                className={({ isActive }) => isActive ? activeStyle : undefined}
-                onClick={()=> handleSignOut()}>
-                Sign Out
-                </NavLink>
-            </li>       
-             )
-    } else {
-        return (
-        <>
+            
+            <>
         <li className='text-black/60'>
           <NavLink>belen@myproject.com</NavLink>
         </li>
@@ -63,6 +64,20 @@ const NavBar = () => {
         </li>
 
         </>
+
+             )
+    } else {
+        return (
+        <>
+         <li>
+                <NavLink
+                to='/sign-in'
+                className={({ isActive }) => isActive ? activeStyle : undefined}
+                onClick={()=> handleSignOut()}>
+                Sign In
+                </NavLink>
+            </li>  
+        </>
         )
     }
   }
@@ -71,7 +86,9 @@ const NavBar = () => {
     <nav className='flex justify-between items-center fixed z-10 w-full top-0 py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
-          <NavLink to='/' onClick={() => context.setSearchByCategory()}>
+          <NavLink
+            to= {`${isUserSignOut ? '/sign-in' : '/'} `} 
+            onClick={() => context.setSearchByCategory()}>
             Shopi
           </NavLink>
         </li>
