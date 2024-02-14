@@ -1,14 +1,7 @@
-import Layout from "../../Components/Layout"
-
-
+import Layout from '../../Components/Layout';
 
 function MyAccount() {
+  return <Layout>My Account</Layout>;
+}
 
-    return (
-      <Layout>
-        My Account
-      </Layout>
-    )
-  }
-  
-  export default MyAccount
+export default MyAccount;

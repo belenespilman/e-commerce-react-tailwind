@@ -1,17 +1,7 @@
-import Layout from "../../Components/Layout"
-
+import Layout from '../../Components/Layout';
 
 function SignIn() {
+  return <Layout>Sign In</Layout>;
+}
 
-    return (
-    
-
-      <Layout>
-        Sign In
-      </Layout>
-        
-     
-    )
-  }
-  
-  export default SignIn
+export default SignIn;
