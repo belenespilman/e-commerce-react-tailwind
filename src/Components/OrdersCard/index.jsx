@@ -1,12 +1,19 @@
+import { useContext } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 import { CalendarDaysIcon } from '@heroicons/react/24/solid';
 import { currentDate } from '../../Utils';
+import {ShoppingCartContext} from '../../Context'
+
 
 const OrdersCard = (props) => {
+
+  const context = useContext(ShoppingCartContext);
+
   const { totalPrice, totalProducts } = props;
 
   return (
+    <>
     <div className='flex justify-between items-center w-[320px] h-full p-4 border border-black rounded-lg shadow-lg  mb-4 cursor-pointer'>
       <div className='flex justify-between w-full'>
         <div className='flex flex-col'>
@@ -28,6 +35,7 @@ const OrdersCard = (props) => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 

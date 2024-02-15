@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ShoppingCartContext } from '../../Context';
 
@@ -18,7 +18,7 @@ const ProductDetail = () => {
           ></XMarkIcon>
         </div>
       </div>
-      <figure className='px-8 py-8'>
+      <figure className='px-10 py-10'>
         <img
           className='w-56 h-60 ml-8 rounded-lg'
           src={context.productToShow.image}

@@ -59,7 +59,7 @@ const Card = ({ item }) => {
         {renderIcon(item.id)}
       </figure>
 
-      <p className='flex justify-between'>
+      <p className='flex justify-between items-center'>
         <span className='text-sm font-light truncate overflow: ellipsis'>
           {item.title}
         </span>
