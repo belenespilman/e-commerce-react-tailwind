@@ -55,7 +55,7 @@ const NavBar = () => {
             My Account
           </NavLink>
         </li>
-        <li>
+        <li className='pr-4 mr-4'>
           <NavLink
             to='/sign-in'
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -70,8 +70,8 @@ const NavBar = () => {
              )
     } else {
         return (
-        <>
-         <li>
+        <div>
+         <li className='pr-4 mr-4'>
                 <NavLink
                 to='/sign-in'
                 className={({ isActive }) => isActive ? activeStyle : undefined}
@@ -79,13 +79,13 @@ const NavBar = () => {
                 Sign In
                 </NavLink>
             </li>  
-        </>
+            </div>
         )
     }
   }
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 w-full top-0 py-5 px-8 text-sm font-light bg-white'>
+    <nav className='sm:invisible lg:visible flex justify-between items-center fixed z-10 w-full top-0 py-5 px-8 text-sm font-light bg-white'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
           <NavLink
@@ -144,7 +144,7 @@ const NavBar = () => {
   
   <ul className='flex items-center gap-3'>
     {RenderView()}
-    <li className='flex items-center'>
+    <li className='lg: visible fixed top-5 right-4 z-50 px-3 items-center'>
           <ShoppingCart/>
     </li>
   </ul>

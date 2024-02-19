@@ -10,6 +10,7 @@ import SignIn from '../SingIn';
 import NavBar from '../../Components/NavBar';
 import CheckoutSideMenu from '../../Components/CheckoutSideMenu';
 import './App.css';
+import Sidebar from '../../Components/Sidebar';
 
 const AppRoutes = () => {
   const context = useContext(ShoppingCartContext);
@@ -53,6 +54,7 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
         <NavBar />
+        <Sidebar/>
         <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>

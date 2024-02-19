@@ -34,7 +34,7 @@ function Home() {
         onChange={(event) => context.search(event)}
       />
 
-      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg '>
+      <div className='grid gap-2 min-w-30 lg:grid-cols-4 w-full max-w-screen-lg  md:grid-cols-3 sm:grid-cols-2'>
         {renderView()}
       </div>
 
