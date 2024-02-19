@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ShoppingCartContext } from '../../Context';
 import ShoppingCart from '../ShoppingCart';
+import {XMarkIcon} from '@heroicons/react/24/solid'
 
 
 const Sidebar = () => {
@@ -17,7 +18,10 @@ const Sidebar = () => {
             <div className=" bg-white w-screen h-screen border pt-10 mt-10">
                 
                 <aside className="pl-4 ml-4">
-                    <ul className='mb-80 space-y-3 cursor-pointer '>
+                        <button className='ml-80'>
+                        <XMarkIcon className='w-6 h-6'/>
+                       </button>
+                    <ul className='mb-80 space-y-3 cursor-pointer '> 
                         <li
                         className='mb-6 font-semibold text-xl cursor-pointer'>
                         <NavLink
@@ -27,10 +31,12 @@ const Sidebar = () => {
                         </NavLink>
                        </li>
 
+                    
+
                         <li>All</li>
                         <li>Clothes</li>
                         <li>Electronics</li>
-                        <li>Clothes</li>
+                        <li>Jewelery</li>
                         <li>Others</li>
                     </ul>
                

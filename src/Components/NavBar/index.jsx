@@ -3,6 +3,10 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ShoppingCartContext } from '../../Context';
 import ShoppingCart from '../ShoppingCart';
+import { Bars3Icon } from "@heroicons/react/24/solid" 
+
+
+
 
 
 const NavBar = () => {
@@ -87,6 +91,11 @@ const NavBar = () => {
   return (
     <nav className='sm:invisible lg:visible flex justify-between items-center fixed z-10 w-full top-0 py-5 px-8 text-sm font-light bg-white'>
       <ul className='flex items-center gap-3'>
+        <button
+         className="sm:visible md:visible lg:invisible">
+       <Bars3Icon className="h-8 w-8 text-black-500"/>
+ 
+        </button>
         <li className='font-semibold text-lg'>
           <NavLink
             to= {`${isUserSignOut ? '/sign-in' : '/'} `} 
@@ -144,7 +153,7 @@ const NavBar = () => {
   
   <ul className='flex items-center gap-3'>
     {RenderView()}
-    <li className='lg: visible fixed top-5 right-4 z-50 px-3 items-center'>
+    <li className= 'lg: visible fixed top-5 right-4 z-50 px-3 items-center'>
           <ShoppingCart/>
     </li>
   </ul>
