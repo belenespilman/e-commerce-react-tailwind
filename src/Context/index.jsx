@@ -71,6 +71,22 @@ export const ShoppingCartProvider = ({ children }) => {
   // Filtered Items
   const [filteredItems, setFilteredItems] = useState([]);
 
+  //SideBar - Open-Close
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+    setScrollEnabled(!scrollEnabled);
+    if (!scrollEnabled) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
   useEffect(() => {
     getAllProducts().then((res) => {
       setItems(res);
@@ -131,11 +147,14 @@ export const ShoppingCartProvider = ({ children }) => {
         filteredItems,
         setFilteredItems,
         searchByCategory,
-        setSearchByCategory,
         account,
         setAccount,
         signOut,
         setSignOut,
+        sidebarOpen,
+        setSidebarOpen,
+        toggleSidebar,
+        setSearchByCategory,
       }}
     >
       {children}

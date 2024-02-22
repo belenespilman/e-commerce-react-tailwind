@@ -1,6 +1,10 @@
 import { useContext } from 'react';
 import { useRoutes, BrowserRouter, Navigate } from 'react-router-dom';
-import { ShoppingCartProvider, initializeLocalStorage, ShoppingCartContext } from '../../Context';
+import {
+  ShoppingCartProvider,
+  initializeLocalStorage,
+  ShoppingCartContext,
+} from '../../Context';
 import Home from '../Home';
 import MyOrder from '../MyOrder';
 import MyAccount from '../MyAccount';
@@ -14,22 +18,24 @@ import Sidebar from '../../Components/Sidebar';
 
 const AppRoutes = () => {
   const context = useContext(ShoppingCartContext);
- //Sign Out
+  //Sign Out
 
- const signOut = localStorage.getItem('sign-out')
- const parsedSignOut = JSON.parse(signOut)
- 
+  const signOut = localStorage.getItem('sign-out');
+  const parsedSignOut = JSON.parse(signOut);
 
- //Account
- const account = localStorage.getItem('account')
- const parsedAccount = JSON.parse(account)
+  //Account
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
 
- //Has an account
- const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
- const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
- const hasUserAnAccount = !noAccountInLocalStorage  || !noAccountInLocalState  
- const isUserSignOut = context.signOut || parsedSignOut
-
+  //Has an account
+  const noAccountInLocalStorage = parsedAccount
+    ? Object.keys(parsedAccount).length === 0
+    : true;
+  const noAccountInLocalState = context.account
+    ? Object.keys(context.account).length === 0
+    : true;
+  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+  const isUserSignOut = context.signOut || parsedSignOut;
 
   let routes = useRoutes([
     { path: '/', element: <Home /> },
@@ -37,12 +43,60 @@ const AppRoutes = () => {
     { path: '/electronics', element: <Home /> },
     { path: '/jewelry', element: <Home /> },
     { path: '/others', element: <Home /> },
-    { path: '/my-account', element: hasUserAnAccount && !isUserSignOut ? <MyAccount /> : <Navigate replace to={'sign-in'} /> },
-    { path: '/my-order', element: hasUserAnAccount && !isUserSignOut ? <MyOrder /> : <Navigate replace to={'sign-in'} />  },
-    { path: '/my-orders/last', element: hasUserAnAccount && !isUserSignOut ? <MyOrder /> : <Navigate replace to={'sign-in'} />  },
-    { path: '/my-orders/:id', element: hasUserAnAccount && !isUserSignOut ? <MyOrder /> : <Navigate replace to={'sign-in'} />  },
-    { path: '/my-orders', element: hasUserAnAccount && !isUserSignOut ? <MyOrders /> : <Navigate replace to={'sign-in'} />  },
-    { path: '/*', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />  },
+    {
+      path: '/my-account',
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <MyAccount />
+        ) : (
+          <Navigate replace to={'sign-in'} />
+        ),
+    },
+    {
+      path: '/my-order',
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <MyOrder />
+        ) : (
+          <Navigate replace to={'sign-in'} />
+        ),
+    },
+    {
+      path: '/my-orders/last',
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <MyOrder />
+        ) : (
+          <Navigate replace to={'sign-in'} />
+        ),
+    },
+    {
+      path: '/my-orders/:id',
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <MyOrder />
+        ) : (
+          <Navigate replace to={'sign-in'} />
+        ),
+    },
+    {
+      path: '/my-orders',
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <MyOrders />
+        ) : (
+          <Navigate replace to={'sign-in'} />
+        ),
+    },
+    {
+      path: '/*',
+      element:
+        hasUserAnAccount && !isUserSignOut ? (
+          <Home />
+        ) : (
+          <Navigate replace to={'sign-in'} />
+        ),
+    },
     { path: '/sign-in', element: <SignIn /> },
   ]);
   return routes;
@@ -52,9 +106,9 @@ const App = () => {
   return (
     <ShoppingCartProvider>
       <BrowserRouter>
+        <Sidebar />
         <AppRoutes />
         <NavBar />
-        <Sidebar/>
         <CheckoutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>
